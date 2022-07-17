@@ -29,7 +29,7 @@ def definition(scan_port):
             definition_string = definition_string + common_ports[i]['Description']
     print(definition_string)
 
-# function to itterate through a range of ports and create a socket to conect to
+# function to iterate through a range of ports and create a socket to connect to
 for port in range(1, 1080):
     # set up a socket for ipv 4 on tcp
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
