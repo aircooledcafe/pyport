@@ -3,6 +3,7 @@ import socket
 from threading import Thread
 # from port_dictionary import common_ports
 from port_descriptions import common_ports
+from port_descriptions import source
 
 # ask user fo an ip address to scan
 print("Please input an IP address to scan:")
@@ -32,18 +33,21 @@ def definition(scan_port):
 for port in range(1, 1080):
     # set up a socket for ipv 4 on tcp
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # Creates new thread fro each scan to imporve performance
+    # Creates new thread fro each scan to improve performance
     new_thread = Thread(target=scanner, args=((ip_address, port)))
     new_thread.start()
     # close the socket on completion of scan
     client_socket.close()
 
-# itterate through the results of the scan and provide some defintions of common uses for
+# iterate through the results of the scan and provide some definitions of common uses for
 # the open ports
 if len(results) > 0:
     print("IP address " + ip_address + " has the following open ports:")
+    print("")
     for item in results:
-        definition(item)      
+        definition(item)
+    print("")
+    print("All descriptions from Wikipedia: " + source)     
 else:
     print("All ports are closed.")
 
