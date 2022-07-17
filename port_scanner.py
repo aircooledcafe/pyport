@@ -1,7 +1,8 @@
 # port scanner
 import socket
 from threading import Thread
-from port_dictionary import common_ports
+# from port_dictionary import common_ports
+from port_descriptions import common_ports
 
 # ask user fo an ip address to scan
 print("Please input an IP address to scan:")
@@ -14,13 +15,13 @@ def scanner(ip, p):
     result = client_socket.connect_ex((ip, p))
     # if result is 0 (the response code for a connection established) 111 for closed port
     if result == 0:
-        print("Port: " + str(p) + " Open")
+        # print("Port: " + str(p) + " Open")
         results.append(p)
 
-# function to pull a brieft defintion from a dictionary of common ports and create a string
+# function to pull a brief definition from a dictionary of common ports and create a string
 # to advice the user on the ports normal use case
 def definition(scan_port):
-    definition_string = str(scan_port) + ": "
+    definition_string = str(scan_port) + " - "
     for i in range(0, len(common_ports)):
         # print(common_ports[i])
         if scan_port == common_ports[i]['Port']:
@@ -40,7 +41,7 @@ for port in range(1, 1080):
 # itterate through the results of the scan and provide some defintions of common uses for
 # the open ports
 if len(results) > 0:
-    print("IP adress " + ip_address + " has the follwoing open ports:")
+    print("IP address " + ip_address + " has the following open ports:")
     for item in results:
         definition(item)      
 else:
