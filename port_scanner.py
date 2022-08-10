@@ -1,7 +1,7 @@
 # port scanner
 import socket
 from threading import Thread
-# from port_dictionary import common_ports
+# import the port descriptions and their source
 from port_descriptions import common_ports
 from port_descriptions import source
 
